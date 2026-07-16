@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
+from werkzeug.security import check_password_hash  # <--- IMPORTA ESTO
 from app.models.user import User
 
 bp = Blueprint('auth', __name__)
@@ -10,12 +11,10 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
-    # Buscamos al usuario por su correo
     user = User.query.filter_by(email=email).first()
 
-    # Validamos que exista y que la contraseña coincida
-    if user and user.password_hash == password:
-        # Generamos el Token JWT (El pase VIP)
+    # AQUÍ ESTÁ EL CAMBIO: Usamos check_password_hash
+    if user and check_password_hash(user.password_hash, password):
         access_token = create_access_token(
             identity=str(user.id),
             additional_claims={
@@ -24,7 +23,6 @@ def login():
             }
         )
         
-        # Devolvemos el token y los datos básicos al Frontend
         return jsonify({
             'token': access_token,
             'user': {
@@ -35,5 +33,4 @@ def login():
             }
         }), 200
     
-    # Si algo falla, rechazamos la entrada
     return jsonify({'error': 'Correo o contraseña incorrectos'}), 401
