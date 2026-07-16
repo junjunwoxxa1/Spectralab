@@ -32,7 +32,7 @@ export default function GemeloDigital() {
   });
   useEffect(() => {
     // 1. Cargar datos del equipo
-    fetch('http://127.0.0.1:5000/api/v1/assets/')
+    fetch('https://spectralab-api.onrender.com/api/v1/assets/')
       .then(res => res.json())
       .then(data => {
         const foundAsset = data.find(item => item.id === id);
@@ -41,13 +41,13 @@ export default function GemeloDigital() {
       .catch(err => console.error("Error cargando activo:", err));
 
     // 2. Cargar historial de mantenimientos
-    fetch(`http://127.0.0.1:5000/api/v1/lifecycle/asset/${id}`)
+    fetch(`https://spectralab-api.onrender.com/api/v1/lifecycle/asset/${id}`)
       .then(res => res.json())
       .then(data => setEvents(data))
       .catch(err => console.error("Error cargando historial:", err));
 
       // 3. Cargar documentos
-    fetch(`http://127.0.0.1:5000/api/v1/documents/asset/${id}`)
+    fetch(`https://spectralab-api.onrender.com/api/v1/documents/asset/${id}`)
       .then(res => res.json())
       .then(data => setDocuments(data))
       .catch(err => console.error("Error cargando documentos:", err));
@@ -70,7 +70,7 @@ export default function GemeloDigital() {
 
   const handleInfoSave = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/v1/assets/${id}`, {
+      const response = await fetch(`https://spectralab-api.onrender.com/api/v1/assets/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editForm),
@@ -104,7 +104,7 @@ export default function GemeloDigital() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/v1/lifecycle/', {
+      const response = await fetch('https://spectralab-api.onrender.com/api/v1/lifecycle/', {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ export default function GemeloDigital() {
   const handleDocSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/v1/documents/', {
+      const response = await fetch('https://spectralab-api.onrender.com/api/v1/documents/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(docForm),

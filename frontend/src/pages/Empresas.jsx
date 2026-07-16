@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Building2, Plus, Search, Mail, Phone, X, Edit2 } from 'lucide-react';
 
-const API_URL = window.location.hostname === 'localhost' 
-  ? 'http://127.0.0.1:5000' 
-  : 'https://TU_TÚNEL_AQUÍ.devtunnels.ms';
+const API_URL = 'https://spectralab-api.onrender.com';
 
 export default function Empresas() {
   const [empresas, setEmpresas] = useState([]);

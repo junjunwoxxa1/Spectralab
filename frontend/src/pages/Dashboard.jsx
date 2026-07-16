@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Building2, ShieldAlert, Wrench, ArrowRight, Clock, CheckCircle2, AlertTriangle } from 'lucide-react';
 
-const API_URL = window.location.hostname === 'localhost' 
-  ? 'http://127.0.0.1:5000' 
-  : 'https://TU_TÚNEL_AQUÍ.devtunnels.ms';
+const API_URL = 'https://spectralab-api.onrender.com';
 
 export default function Dashboard() {
   const [assets, setAssets] = useState([]);

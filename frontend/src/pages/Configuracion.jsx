@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { User, Users, Bell, Shield, Webhook, Key, Save, Loader2, CheckCircle2, AlertCircle, Plus, X, Edit2, Power, ToggleLeft, ToggleRight, Eye, EyeOff } from 'lucide-react';
 
-const API_URL = window.location.hostname === 'localhost' 
-  ? 'http://127.0.0.1:5000' 
-  : 'https://TU_TÚNEL_AQUÍ.devtunnels.ms';
+const API_URL = 'https://spectralab-api.onrender.com';
 
 export default function Configuracion() {
   const [activeTab, setActiveTab] = useState('perfil');

@@ -19,7 +19,7 @@ export default function Activos() {
 
   // Cargar los equipos al iniciar
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/v1/assets/')
+    fetch('https://spectralab-api.onrender.com/api/v1/assets/')
       .then(res => res.json())
       .then(data => setAssets(data))
       .catch(err => console.error(err));
@@ -37,7 +37,7 @@ export default function Activos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/v1/assets/', {
+      const response = await fetch('https://spectralab-api.onrender.com/api/v1/assets/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

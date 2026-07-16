@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Ticket, Plus, Search, AlertCircle, Clock, CheckCircle2, X } from 'lucide-react';
 
-const API_URL = window.location.hostname === 'localhost' 
-  ? 'http://127.0.0.1:5000' 
-  : 'https://TU_TÚNEL_AQUÍ.devtunnels.ms';
+const API_URL = 'https://spectralab-api.onrender.com';
 
 export default function Solicitudes() {
   const [tickets, setTickets] = useState([]);
